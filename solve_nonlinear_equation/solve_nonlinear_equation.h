@@ -9,4 +9,6 @@ vector<point>	create_table(VALUE_TYPE (*fun)(VALUE_TYPE), VALUE_TYPE a, VALUE_TY
 vector<line_segment>	localization(vector<point> table);
 
 point	bisection_method(VALUE_TYPE (*fun)(VALUE_TYPE), point a, point b);
+point	Newtons_method(VALUE_TYPE (*fun)(VALUE_TYPE), point a, point b);
+
 #endif

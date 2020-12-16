@@ -3,11 +3,11 @@
 point	bisection_method(VALUE_TYPE (*fun)(VALUE_TYPE), point a, point b)
 {
 	point	root;
-	root.x = (a.x+ b.x) / 2;
+	root.x = (a.x + b.x) / 2;
    	root.y = fun(root.x);
 
    	int k = 0; // количество итераций
-	while (b.x - a.x >= 2 * EPSILON)
+	while (b.x - a.x > 2 * EPSILON)
 	{
 		if (a.y * root.y < 0)
 		{
@@ -26,7 +26,7 @@ point	bisection_method(VALUE_TYPE (*fun)(VALUE_TYPE), point a, point b)
 		k += 1;
 	}
 
-	cout << MAGENTA << "количество итераций: " << RESET << k << ", ";
+	cout << MAGENTA << "количество итераций: " << k << ", " << RESET;
 
 	return root;
 }

@@ -52,8 +52,8 @@ struct	point3D
 };
 
 VALUE_TYPE	test_1(VALUE_TYPE x);
-//VALUE_TYPE	test_2(VALUE_TYPE x);
-//VALUE_TYPE	test_3(VALUE_TYPE x);
+VALUE_TYPE	test_2(VALUE_TYPE x);
+VALUE_TYPE	test_3(VALUE_TYPE x);
 //VALUE_TYPE	test_4(VALUE_TYPE x);
 
 #include "solve_nonlinear_equation/solve_nonlinear_equation.h"
