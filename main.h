@@ -8,9 +8,14 @@
 #include <cmath>
 
 #define WIDTH	8
-#define PREC	4
-#define STEP	0.01
+#define PREC	8
+#define STEP	0.02
 #define EPSILON	0.000001
+
+#define	TEST2	false
+#define TEST3	false
+
+#define ANAL_DIR	false
 
 #define DIR		"output/"		
 
@@ -48,13 +53,21 @@ struct	point3D
 {
 	VALUE_TYPE	x1;
 	VALUE_TYPE	x2;
-	VALUE_TYPE	y;
+	VALUE_TYPE	f1;
+	VALUE_TYPE	f2;
 };
 
 VALUE_TYPE	test_1(VALUE_TYPE x);
 VALUE_TYPE	test_2(VALUE_TYPE x);
 VALUE_TYPE	test_3(VALUE_TYPE x);
-//VALUE_TYPE	test_4(VALUE_TYPE x);
+VALUE_TYPE	test_4_1(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_4_2(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_5_1(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_5_2(VALUE_TYPE x1, VALUE_TYPE x2);
+
+VALUE_TYPE	test_d_1(VALUE_TYPE x);
+VALUE_TYPE	test_d_2(VALUE_TYPE x);
+VALUE_TYPE	test_d_3(VALUE_TYPE x);
 
 #include "solve_nonlinear_equation/solve_nonlinear_equation.h"
 

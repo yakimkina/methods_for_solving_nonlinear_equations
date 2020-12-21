@@ -12,12 +12,20 @@ VALUE_TYPE	test_2(VALUE_TYPE x)
 VALUE_TYPE	test_3(VALUE_TYPE x)
 { return 35 * pow(x, 3) - 67 * pow(x, 2) - 3 * x + 3; }
 
-/* y = (4x^3 + 2x^2 - 4x + 2)^√2 + arcsin(1 / (5 + x - x^2)) - 5 */
-//VALUE_TYPE	test_4(VALUE_TYPE x)
-//{
-//	VALUE_TYPE	x2 = pow(x, 2);
-//	return (pow((4 * pow(x, 3) + 2 * x2 - 4 * x + 2), sqrt(2)) +
-//	asin(1 / (5 + x - x2)) - 5);
-//}
+/* system:
+ * f1 = x1^2 - x2^2 - 15
+ * f2 = x1 * x2 + 4
+ * */
+VALUE_TYPE	test_4_1(VALUE_TYPE x1, VALUE_TYPE x2)
+{ return (pow(x1, 2) - pow(x2, 2) - 15); }
+VALUE_TYPE	test_4_2(VALUE_TYPE x1, VALUE_TYPE x2)
+{ return (x1 * x2 + 4); }
 
-
+/* system:
+ * f1 = x1^2 + x2^2 + x1 + x2 - 8
+ * f2 = x1^2 + x2^2 + x1 * x2 - 7
+ * */
+VALUE_TYPE	test_5_1(VALUE_TYPE x1, VALUE_TYPE x2)
+{ return (pow(x1, 2) + pow(x2, 2) + x1 + x2 - 8); }
+VALUE_TYPE	test_5_2(VALUE_TYPE x1, VALUE_TYPE x2)
+{ return (pow(x1, 2) + pow(x2, 2) + x1 * x2 - 7); }

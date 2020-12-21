@@ -1,13 +1,14 @@
 #include "solve_nonlinear_equation.h"
 
-vector<line_segment>	localization(vector<point> table)
+vector<line_segment>	localization(vector<point> &table)
 {
 	int n = table.size();
 	vector<line_segment>	segments;
 
 	for (int i = 0; i < n - 1; i++)
 	{
-		if (table[i].y * table[i + 1].y < 0)
+		VALUE_TYPE ch = table[i].y * table[i + 1].y;
+		if (ch <= 0)
 		{
 			point	a, b;
 			a.x = table[i].x;
@@ -20,6 +21,8 @@ vector<line_segment>	localization(vector<point> table)
 			tmp.b = b;
 
 			segments.push_back(tmp);
+
+			if (ch == 0 && table[i + 1].y == 0) ++i;
 		}
 	}
 
