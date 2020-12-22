@@ -10,14 +10,19 @@ point	bisection_method(VALUE_TYPE (*f)(VALUE_TYPE), point a, point b)
    	int k = 1; // количество итераций
 	while (b.x - a.x > 2 * EPSILON)
 	{
-		if (abs(root.y) < EPSILON || abs(a.y) < EPSILON || abs(b.y) < EPSILON)
-			break;
-		
 		if (a.y * root.y < 0)
 		{
 			b.x = root.x;
 			b.y = root.y;
 		}
+		else if (a.y == 0)
+		{
+			root.x = a.x;
+			root.y = a.y;
+			break;
+		}
+		else if (root.y == 0)
+			break;
 		else
 		{
 			a.x = root.x;

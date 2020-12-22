@@ -28,10 +28,18 @@ void	solve_nonlinear_equation(VALUE_TYPE (*f)(VALUE_TYPE), VALUE_TYPE (*f_d)(VAL
 	}
 }
 
-void	solve_nonlinear_equation(VALUE_TYPE (*f1)(VALUE_TYPE, VALUE_TYPE), VALUE_TYPE (*f2)(VALUE_TYPE, VALUE_TYPE),
-								 VALUE_TYPE a, VALUE_TYPE b)
+void	solve_nonlinear_equation(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)>	&f,
+								 vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f_d,
+								 vector<point3d> &x0, VALUE_TYPE a, VALUE_TYPE b)
 {
-	vector<point3D>	table = create_table(f1, f2, a, b);
+	cout.precision(PREC);
+	cout << endl << MAGENTA << fixed << "[МЕТОД  НЬЮТОНА] отрезок локализации: [" << a << ", " << b << "]:" << endl;
 
+	for (int i = 0; i < x0.size(); i++)
+	{
+		cout << MAGENTA << fixed << "начальное приближение: (" << x0[i].x1 << ", " << x0[i].x2 << "), ";
+		point3d	x_i = Newtons_method(f, f_d, x0[i], a, b);
+		cout << MAGENTA << fixed << "x[" << i << "] = (" << x_i.x1 << ", " << x_i.x2 << "), f1[x] = " << x_i.y1 << ", f2[x] = " << x_i.y2 << endl;
+	}
 }
 

@@ -15,7 +15,7 @@
 #define	TEST2	false
 #define TEST3	false
 
-#define ANAL_DIR	false
+#define ANAL_DIR	true
 
 #define DIR		"output/"		
 
@@ -49,12 +49,12 @@ struct	line_segment
 	point	b;
 };
 
-struct	point3D
+struct	point3d
 {
 	VALUE_TYPE	x1;
 	VALUE_TYPE	x2;
-	VALUE_TYPE	f1;
-	VALUE_TYPE	f2;
+	VALUE_TYPE	y1;
+	VALUE_TYPE	y2;
 };
 
 VALUE_TYPE	test_1(VALUE_TYPE x);
@@ -65,9 +65,20 @@ VALUE_TYPE	test_4_2(VALUE_TYPE x1, VALUE_TYPE x2);
 VALUE_TYPE	test_5_1(VALUE_TYPE x1, VALUE_TYPE x2);
 VALUE_TYPE	test_5_2(VALUE_TYPE x1, VALUE_TYPE x2);
 
+VALUE_TYPE	f_d_iter(VALUE_TYPE (*f)(VALUE_TYPE), VALUE_TYPE x);
+VALUE_TYPE	f_d_x1_iter(VALUE_TYPE (*f)(VALUE_TYPE, VALUE_TYPE), VALUE_TYPE x1, const VALUE_TYPE x2);
+VALUE_TYPE	f_d_x2_iter(VALUE_TYPE (*f)(VALUE_TYPE, VALUE_TYPE), const VALUE_TYPE x1, VALUE_TYPE x2);
 VALUE_TYPE	test_d_1(VALUE_TYPE x);
 VALUE_TYPE	test_d_2(VALUE_TYPE x);
 VALUE_TYPE	test_d_3(VALUE_TYPE x);
+VALUE_TYPE	test_4_1_x1(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_4_1_x2(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_4_2_x1(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_4_2_x2(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_5_1_x1(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_5_1_x2(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_5_2_x1(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_5_2_x2(VALUE_TYPE x1, VALUE_TYPE x2);
 
 #include "solve_nonlinear_equation/solve_nonlinear_equation.h"
 
