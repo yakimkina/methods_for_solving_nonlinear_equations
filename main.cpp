@@ -2,25 +2,29 @@
 
 int		main()
 {
+//	cout << GREEN << "TEST:" << RESET << endl;
+//	solve_nonlinear_equation(test, test_d, 0.8, 1.2);
+
+//	тест 1
 	if (!TEST2 && !TEST3)
 	{
 		cout << GREEN << "TEST 1:" << RESET << endl;
 		solve_nonlinear_equation(test_1, test_d_1, 0, 1);
 	}
-
+//	тест 2
 	if (!TEST3)
 	{
 		cout << endl << GREEN << "TEST 2:" << RESET << endl;
 		solve_nonlinear_equation(test_2, test_d_2, -1, 10);
 	}
-
+//	тест 3
 	if (!TEST2)
 	{
 		cout << endl << GREEN << "TEST 3:" << RESET << endl;
 		solve_nonlinear_equation(test_3, test_d_3, 0, 1);
 	}
-
-	// начальное приближение  [тест 4]
+//	тест 4
+	// начальное приближение
 	vector<point3d>	x0_t4;
 	point3d	p1_t4, p2_t4;
 	p1_t4.x1 = 3.7; p1_t4.x2 = -0.7; p1_t4.y1 = test_4_1(p1_t4.x1, p1_t4.x2); p1_t4.y2 = test_4_2(p1_t4.x1, p1_t4.x2);
@@ -43,8 +47,8 @@ int		main()
 	cout << endl << GREEN << "TEST 4:" << RESET << endl;
 	solve_nonlinear_equation(f_t4, f_d_t4, x0_t4, -10, 10);
 
-
-	// начальное приближение [тест 5]
+//	тест 5
+	// начальное приближение
 	vector<point3d>	x0_t5;
 	point3d	p1_t5, p2_t5, p3_t5, p4_t5;
 	p1_t5.x1 = -3.5; p1_t5.x2 = 0.7; p1_t5.y1 = test_5_1(p1_t5.x1, p1_t5.x2); p1_t5.y2 = test_5_2(p1_t5.x1, p1_t5.x2);
@@ -70,6 +74,6 @@ int		main()
 
 	cout << endl << GREEN << "TEST 5:" << RESET << endl;
 	solve_nonlinear_equation(f_t5, f_d_t5, x0_t5, -10, 10);
-
+	
 	return 0;
 }

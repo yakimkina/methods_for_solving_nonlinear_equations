@@ -10,4 +10,4 @@ add_executable(methods_for_solving_nonlinear_equations
         solve_nonlinear_equation/solve_nonlinear_equation.cpp
         solve_nonlinear_equation/table_creation.cpp
         solve_nonlinear_equation/localization.cpp
-        solve_nonlinear_equation/bisection_method.cpp solve_nonlinear_equation/Newtons_method.cpp tests_d.cpp)
+        solve_nonlinear_equation/bisection_method.cpp solve_nonlinear_equation/Newtons_method.cpp tests_d.cpp solve_nonlinear_equation/Newtons_method_for_system.cpp)

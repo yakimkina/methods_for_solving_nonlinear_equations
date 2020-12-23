@@ -3,12 +3,12 @@
 vector<line_segment>	localization(vector<point> &table)
 {
 	int n = table.size();
-	vector<line_segment>	segments;
+	vector<line_segment>	segments; // здесь будем хранить отрезки, которые содержат корни функции
 
 	for (int i = 0; i < n - 1; i++)
 	{
-		VALUE_TYPE ch = table[i].y * table[i + 1].y;
-		if (ch <= 0)
+		VALUE_TYPE ch = table[i].y * table[i + 1].y; // если ch < 0, значит функция поменяла знак
+		if (ch < 0 || abs(ch) < EPSILON * EPSILON)
 		{
 			point	a, b;
 			a.x = table[i].x;
@@ -22,7 +22,9 @@ vector<line_segment>	localization(vector<point> &table)
 
 			segments.push_back(tmp);
 
-			if (ch == 0 && table[i + 1].y == 0) ++i;
+			/* случай, когда нуль функции совпал с концом отрезка */
+			if (abs(ch) < EPSILON * EPSILON &&
+				abs(table[i + 1].y) < EPSILON * EPSILON) ++i;
 		}
 	}
 

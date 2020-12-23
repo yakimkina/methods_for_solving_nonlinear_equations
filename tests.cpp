@@ -12,7 +12,7 @@ VALUE_TYPE	test_2(VALUE_TYPE x)
 VALUE_TYPE	test_3(VALUE_TYPE x)
 { return 35 * pow(x, 3) - 67 * pow(x, 2) - 3 * x + 3; }
 
-/* system:
+/* система:
  * f1 = x1^2 - x2^2 - 15
  * f2 = x1 * x2 + 4
  * */
@@ -21,7 +21,7 @@ VALUE_TYPE	test_4_1(VALUE_TYPE x1, VALUE_TYPE x2)
 VALUE_TYPE	test_4_2(VALUE_TYPE x1, VALUE_TYPE x2)
 { return (x1 * x2 + 4); }
 
-/* system:
+/* система:
  * f1 = x1^2 + x2^2 + x1 + x2 - 8
  * f2 = x1^2 + x2^2 + x1 * x2 - 7
  * */
@@ -29,3 +29,11 @@ VALUE_TYPE	test_5_1(VALUE_TYPE x1, VALUE_TYPE x2)
 { return (pow(x1, 2) + pow(x2, 2) + x1 + x2 - 8); }
 VALUE_TYPE	test_5_2(VALUE_TYPE x1, VALUE_TYPE x2)
 { return (pow(x1, 2) + pow(x2, 2) + x1 * x2 - 7); }
+
+
+/* тесты для контрольных вопросов / вопросов преподователя */
+VALUE_TYPE	test(VALUE_TYPE x)
+{ return pow((x - 1), 2); }
+
+VALUE_TYPE	test_d(VALUE_TYPE x)
+{ return 2 * (x - 1); }

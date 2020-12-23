@@ -2,8 +2,8 @@
 
 void	solve_nonlinear_equation(VALUE_TYPE (*f)(VALUE_TYPE), VALUE_TYPE (*f_d)(VALUE_TYPE), VALUE_TYPE a, VALUE_TYPE b)
 {
-	vector<point>	table = create_table(f, a, b);
-	vector<line_segment>	segments = localization(table);
+	vector<point>	table = create_table(f, a, b); // создаем таблицу значений функции с шагом STEP
+	vector<line_segment>	segments = localization(table); // локализация
 
 	cout << GREEN << "количество корней уравнения: " << segments.size() << RESET << endl << endl;
 
@@ -28,10 +28,12 @@ void	solve_nonlinear_equation(VALUE_TYPE (*f)(VALUE_TYPE), VALUE_TYPE (*f_d)(VAL
 	}
 }
 
-void	solve_nonlinear_equation(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)>	&f,
-								 vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f_d,
+void	solve_nonlinear_equation(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)>	&f, // 2 функции системы
+								 vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f_d, // 4 частные производные
 								 vector<point3d> &x0, VALUE_TYPE a, VALUE_TYPE b)
 {
+	cout << GREEN << "количество корней уравнения: " << x0.size() << RESET << endl << endl;
+	
 	cout.precision(PREC);
 	cout << endl << MAGENTA << fixed << "[МЕТОД  НЬЮТОНА] отрезок локализации: [" << a << ", " << b << "]:" << endl;
 
