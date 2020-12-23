@@ -27,8 +27,8 @@ int		main()
 	// начальное приближение
 	vector<point3d>	x0_t4;
 	point3d	p1_t4, p2_t4;
-	p1_t4.x1 = 3.7; p1_t4.x2 = -0.7; p1_t4.y1 = test_4_1(p1_t4.x1, p1_t4.x2); p1_t4.y2 = test_4_2(p1_t4.x1, p1_t4.x2);
-	p2_t4.x1 = -3.7; p2_t4.x2 = 0.7; p2_t4.y1 = test_4_1(p2_t4.x1, p2_t4.x2); p2_t4.y2 = test_4_2(p2_t4.x1, p2_t4.x2);
+	p1_t4.x1 = 3.5; p1_t4.x2 = -0.5; p1_t4.y1 = test_4_1(p1_t4.x1, p1_t4.x2); p1_t4.y2 = test_4_2(p1_t4.x1, p1_t4.x2);
+	p2_t4.x1 = -3.5; p2_t4.x2 = 0.5; p2_t4.y1 = test_4_1(p2_t4.x1, p2_t4.x2); p2_t4.y2 = test_4_2(p2_t4.x1, p2_t4.x2);
 	x0_t4.push_back(p1_t4);
 	x0_t4.push_back(p2_t4);
 
