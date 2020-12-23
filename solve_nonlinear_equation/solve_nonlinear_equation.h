@@ -23,6 +23,7 @@ point	Newtons_method(VALUE_TYPE (*f)(VALUE_TYPE), VALUE_TYPE (*f_d)(VALUE_TYPE),
 /* метод Ньютона для систем уравнений */
 point3d	Newtons_method(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f,
 						  vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f_d,
-						  point3d	x0, VALUE_TYPE a, VALUE_TYPE b);
+						  point3d	x0, VALUE_TYPE a, VALUE_TYPE b,
+						  string test_name, bool is_last);
 
 #endif

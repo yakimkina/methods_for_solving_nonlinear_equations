@@ -37,3 +37,18 @@ VALUE_TYPE	test(VALUE_TYPE x)
 
 VALUE_TYPE	test_d(VALUE_TYPE x)
 { return 2 * (x - 1); }
+
+VALUE_TYPE	test_1(VALUE_TYPE x1, VALUE_TYPE x2)
+{ return 2 * x1 + 3 * x2 + 1;}
+VALUE_TYPE	test_2(VALUE_TYPE x1, VALUE_TYPE x2)
+{ return (-4) * x1 + 8 * x2 + 12;}
+
+
+VALUE_TYPE	test_1_x1(VALUE_TYPE x1, VALUE_TYPE x2)
+{ return 2;}
+VALUE_TYPE	test_1_x2(VALUE_TYPE x1, VALUE_TYPE x2)
+{ return 3;}
+VALUE_TYPE	test_2_x1(VALUE_TYPE x1, VALUE_TYPE x2)
+{ return -4;}
+VALUE_TYPE	test_2_x2(VALUE_TYPE x1, VALUE_TYPE x2)
+{ return 8;}

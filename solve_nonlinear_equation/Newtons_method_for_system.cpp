@@ -1,8 +1,5 @@
 #include "solve_nonlinear_equation.h"
 
-VALUE_TYPE	sign(VALUE_TYPE x)
-{ return (x > 0) ? 1 : ((x < 0) ? -1 : 0); }
-
 /* функции для построения прямой через две точки */
 VALUE_TYPE	fun_x1(point3d x0, point3d xk, VALUE_TYPE x2)
 { return (xk.x1 - x0.x1) * (x2 - x0.x2) / (xk.x2 - x0.x2) + x0.x1; }
@@ -63,7 +60,7 @@ void	out_of_range_check(point3d &pnt, point3d &x0, VALUE_TYPE a, VALUE_TYPE b)
 	}
 	else if (pnt.x2 < a && abs(pnt.x1) < b)
 	{
-		pnt.x1 = (fun_x1(x0, pnt, a) + x0.x1) / 2;;
+		pnt.x1 = (fun_x1(x0, pnt, a) + x0.x1) / 2;
 		pnt.x2 = (a + x0.x2) / 2;
 	}
 	else if (pnt.x1 < a && pnt.x2 < 0)
@@ -128,13 +125,27 @@ void	out_of_range_check(point3d &pnt, point3d &x0, VALUE_TYPE a, VALUE_TYPE b)
 	}
 }
 
+/* запись в файл */
+void	create_and_fill_file(point3d x0, int k, string &test_name, bool is_last)
+{
+	ofstream	file(DIR + test_name + "_diagram.csv", ios::app);
+
+	file << k;
+	if (!is_last) file << ", ";
+	else file << endl;
+
+	file.close();
+}
+
 point3d	Newtons_method(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f,
 					   vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f_d,
-					   point3d x0, VALUE_TYPE a, VALUE_TYPE b)
+					   point3d x0, VALUE_TYPE a, VALUE_TYPE b,
+					   string test_name, bool is_last) // переменные для записи в файл
 {
 	int k = 0; // количество итераций
 
-	point3d	xk;
+	point3d	x_zero, xk;
+	x_zero = x0; // сохраняем начальное приближение(для вывода в файл)
 
 	if (abs(x0.y1) < EPSILON && abs(x0.y2) < EPSILON)	// если начальное приближение совпало с корнем
 		xk = x0;
@@ -147,12 +158,19 @@ point3d	Newtons_method(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f,
 
 		/* определитель матрицы Якоби в текущей точке */
 		VALUE_TYPE	det = curr_dir[0] * curr_dir[3] - curr_dir[1] * curr_dir[2];
-
-		xk.x1 = x0.x1 - (f[0](x0.x1, x0.x2) * curr_dir[0] - f[1](x0.x1, x0.x2) * curr_dir[1]) / det;
-		xk.x2 = x0.x2 - ((-1) * f[0](x0.x1, x0.x2) * curr_dir[2] + f[1](x0.x1, x0.x2) * curr_dir[3]) / det;
-		xk.y1 = f[0](xk.x1, xk.x2);
-		xk.y2 = f[1](xk.x1, xk.x2);
-		out_of_range_check(xk, x0, a, b);
+		if (det == 0)
+		{
+			cout << RED << endl << "[ERROR] det F(X^(k)) = 0" << RESET << endl;
+			k = 30; // не заходим в цикл
+		}
+		else
+		{
+			xk.x1 = x0.x1 - (f[0](x0.x1, x0.x2) * curr_dir[0] - f[1](x0.x1, x0.x2) * curr_dir[1]) / det;
+			xk.x2 = x0.x2 - ((-1) * f[0](x0.x1, x0.x2) * curr_dir[2] + f[1](x0.x1, x0.x2) * curr_dir[3]) / det;
+			xk.y1 = f[0](xk.x1, xk.x2);
+			xk.y2 = f[1](xk.x1, xk.x2);
+			out_of_range_check(xk, x0, a, b);
+		}
 
 		while (norm_inf(xk, x0) > EPSILON && k < 30)
 		{
@@ -162,24 +180,36 @@ point3d	Newtons_method(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f,
 
 			curr_dir = (ANAL_DIR) ? find_curr_val_of_dir(f_d, x0) : find_curr_val_of_dir_iter(f, f_d.size(), x0);
 			det = curr_dir[0] * curr_dir[3] - curr_dir[1] * curr_dir[2];
+			if (det == 0)
+			{
+				cout << RED << endl << "[ERROR] det F(X^(k)) = 0" << RESET << endl;
+				k = 30; // выходим из цикла
+				break;
+			}
+			else
+			{
+				xk.x1 = x0.x1 - (f[0](x0.x1, x0.x2) * curr_dir[0] - f[1](x0.x1, x0.x2) * curr_dir[1]) / det;
+				xk.x2 = x0.x2 - ((-1) * f[0](x0.x1, x0.x2) * curr_dir[2] + f[1](x0.x1, x0.x2) * curr_dir[3]) / det;
 
-			xk.x1 = x0.x1 - (f[0](x0.x1, x0.x2) * curr_dir[0] - f[1](x0.x1, x0.x2) * curr_dir[1]) / det;
-			xk.x2 = x0.x2 - ((-1) * f[0](x0.x1, x0.x2) * curr_dir[2] + f[1](x0.x1, x0.x2) * curr_dir[3]) / det;
+				out_of_range_check(xk, x0, a, b); // проверка выхода из области
 
-			out_of_range_check(xk, x0, a, b); // проверка выхода из области
+				xk.y1 = f[0](xk.x1, xk.x2);
+				xk.y2 = f[1](xk.x1, xk.x2);
 
-			xk.y1 = f[0](xk.x1, xk.x2);
-			xk.y2 = f[1](xk.x1, xk.x2);
-
-			k += 1;
+				k += 1;
+			}
 		}
 	}
 
-	cout.precision(PREC);
-	cout << MAGENTA << fixed << "количество итераций: " << k << ", " << RESET;
+	if (!DIAGRAM)
+	{
+		cout.precision(PREC);
+		cout << MAGENTA << fixed << "количество итераций: " << k << ", " << RESET;
+	}
+
+	if (DIAGRAM) create_and_fill_file(x_zero, k, test_name, is_last);
 
 	return xk;
-	
 }
 
 

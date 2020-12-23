@@ -14,8 +14,9 @@
 #define	TEST2	false	// true если во 2 тесте берем нач. приближение x0 = 8
 #define TEST3	false   // true если в 3 тесте берем нач. приближение x0 = 0
 
-#define ANAL_DIR	true  // true если хотим вчислять производные аналитически, false если численно
+#define ANAL_DIR	false  // true если хотим вчислять производные аналитически, false если численно
 
+#define	DIAGRAM	false // построить диаграмму сходимости, все точки сохраняются в файл в папку DIR
 #define DIR		"output/" // папка, в которую сохраняются файлы
 
 #define PRINT_STEPS	false
@@ -58,6 +59,12 @@ struct	point3d     // точка в 3х мерном пространстве
 
 VALUE_TYPE	test(VALUE_TYPE x);
 VALUE_TYPE	test_d(VALUE_TYPE x);
+VALUE_TYPE	test_1(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_2(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_1_x1(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_1_x2(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_2_x1(VALUE_TYPE x1, VALUE_TYPE x2);
+VALUE_TYPE	test_2_x2(VALUE_TYPE x1, VALUE_TYPE x2);
 
 /* тестовые функции */
 VALUE_TYPE	test_1(VALUE_TYPE x);

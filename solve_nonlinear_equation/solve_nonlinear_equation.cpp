@@ -40,7 +40,7 @@ void	solve_nonlinear_equation(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)>	&f,
 	for (int i = 0; i < x0.size(); i++)
 	{
 		cout << MAGENTA << fixed << "начальное приближение: (" << x0[i].x1 << ", " << x0[i].x2 << "), ";
-		point3d	x_i = Newtons_method(f, f_d, x0[i], a, b);
+		point3d	x_i = Newtons_method(f, f_d, x0[i], a, b, "", false);
 		cout << MAGENTA << fixed << "x[" << i << "] = (" << x_i.x1 << ", " << x_i.x2 << "), f1[x] = " << x_i.y1 << ", f2[x] = " << x_i.y2 << endl;
 	}
 }

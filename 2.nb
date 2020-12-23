@@ -1,0 +1,189 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7842,        181]
+NotebookOptionsPosition[      6958,        160]
+NotebookOutlinePosition[      7296,        175]
+CellTagsIndexPosition[      7253,        172]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"data1", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\</Users/yakimkina/_workspace/_mgtu/cpp/methods_for_solving_nonlinear_\
+equations/cmake-build-debug/output/test4_diagram.csv\>\"", ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"\"\<CSV\>\"", ",", " ", "\"\<Data\>\""}], "}"}], ",", 
+     RowBox[{"\"\<Numeric\>\"", "\[Rule]", "True"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"data2", "=", 
+    RowBox[{"Import", "[", 
+     RowBox[{
+     "\"\</Users/yakimkina/_workspace/_mgtu/cpp/methods_for_solving_nonlinear_\
+equations/cmake-build-debug/output/test5_diagram.csv\>\"", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<CSV\>\"", ",", " ", "\"\<Data\>\""}], "}"}], ",", 
+      RowBox[{"\"\<Numeric\>\"", "\[Rule]", "True"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"func", "[", "a_", "]"}], " ", ":=", " ", 
+  RowBox[{"Module", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"a", " ", "<", " ", "30"}], ",", " ", 
+       RowBox[{"Return", " ", "[", 
+        RowBox[{
+         RowBox[{"ColorData", "[", "\"\<GrayLevel\>\"", "]"}], "[", "a", 
+         "]"}], "]"}], ",", " ", 
+       RowBox[{"Return", "[", "Red", "]"}]}], "]"}], ";"}], ",", " ", 
+    RowBox[{"{", "}"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.817735948168047*^9, 3.81773609991882*^9}, {
+   3.817737922751131*^9, 3.817737928590537*^9}, 3.817737993265114*^9, {
+   3.817738897734211*^9, 3.817738901774519*^9}, {3.817740352834318*^9, 
+   3.817740410611463*^9}, {3.8177404935068197`*^9, 3.817740520250671*^9}, {
+   3.8177406295044403`*^9, 3.817740679261594*^9}, {3.817740728086689*^9, 
+   3.817740728438151*^9}, {3.8177407740867643`*^9, 3.817740793869588*^9}, 
+   3.817740868764482*^9, {3.8177409704959593`*^9, 3.817740975515379*^9}},
+ CellLabel->
+  "In[138]:=",ExpressionUUID->"20a0e02c-6643-41e6-8d78-bdec995d0ffb"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.817736135176784*^9, 3.817736166775861*^9}, {
+   3.8177362790741253`*^9, 3.817736319129258*^9}, {3.817736428128191*^9, 
+   3.817736433336335*^9}, {3.81773646774436*^9, 3.817736630953641*^9}, {
+   3.817736736902791*^9, 3.81773676592337*^9}, {3.817736941923805*^9, 
+   3.8177369439335833`*^9}, {3.8177369924444313`*^9, 3.817737006774613*^9}, {
+   3.8177370546066513`*^9, 3.817737093369536*^9}, {3.81773713090594*^9, 
+   3.817737133770895*^9}, {3.817737611569017*^9, 3.817737619533312*^9}, {
+   3.81773765139392*^9, 3.817737655786941*^9}, {3.8177377270054197`*^9, 
+   3.8177377359997797`*^9}, {3.817739748032446*^9, 3.8177397495294123`*^9}, {
+   3.8177406887036953`*^9, 3.817740690707017*^9}, {3.817741008131709*^9, 
+   3.8177410659483757`*^9}, {3.817741195685479*^9, 3.8177412194063177`*^9}, 
+   3.817741750227744*^9},ExpressionUUID->"497ec0c2-5afd-403e-b801-\
+1fcc7bbe0129"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"p1", " ", "=", " ", 
+   RowBox[{"ArrayPlot", "[", 
+    RowBox[{"data1", ",", " ", 
+     RowBox[{"ColorFunction", "->", "GrayLevel"}], ",", " ", 
+     RowBox[{"PlotLegends", "\[Rule]", "Automatic"}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", " ", "30"}], "}"}]}], ",", " ", 
+     RowBox[{"ColorRules", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"30", "\[Rule]", "Red"}], "}"}]}], ",", " ", 
+     RowBox[{"ImageSize", "\[Rule]", "1000"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p2", " ", "=", " ", 
+   RowBox[{"ArrayPlot", "[", 
+    RowBox[{"data2", ",", " ", 
+     RowBox[{"ColorFunction", "->", "GrayLevel"}], ",", " ", 
+     RowBox[{"PlotLegends", "\[Rule]", "Automatic"}], ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", " ", "30"}], "}"}]}], ",", " ", 
+     RowBox[{"ColorRules", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"30", "\[Rule]", "Red"}], "}"}]}], ",", " ", 
+     RowBox[{"ImageSize", "\[Rule]", "1000"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\</Users/yakimkina/_workspace/_mgtu/cpp/methods_for_solving_nonlinear_\
+equations/test4_chisl[0.8].pdf\>\"", ",", " ", "p1"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\</Users/yakimkina/_workspace/_mgtu/cpp/methods_for_solving_nonlinear_\
+equations/test5_chisl[0.8].pdf\>\"", ",", " ", "p2"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8177361858457823`*^9, 3.817736187561738*^9}, {
+  3.817736340529262*^9, 3.817736341098105*^9}, {3.8177367796779337`*^9, 
+  3.8177367818295317`*^9}, {3.8177397676041594`*^9, 3.817739774940873*^9}, {
+  3.817739853779552*^9, 3.817739900453247*^9}, {3.817739977681184*^9, 
+  3.81774008633538*^9}, {3.817740156458519*^9, 3.817740245709996*^9}, {
+  3.817741123764278*^9, 3.817741173571311*^9}, {3.817741267215686*^9, 
+  3.817741270163917*^9}, {3.817741313260213*^9, 3.8177413540131617`*^9}, {
+  3.817741444352632*^9, 3.817741496287772*^9}, {3.8177415287145348`*^9, 
+  3.8177415480707693`*^9}, {3.8177417526910467`*^9, 3.817741754101471*^9}, {
+  3.8177419340662403`*^9, 3.817741943820552*^9}},
+ CellLabel->
+  "In[141]:=",ExpressionUUID->"0eea3390-6f8f-4c25-b0fc-05400284cf17"],
+
+Cell[BoxData["\<\"/Users/yakimkina/_workspace/_mgtu/cpp/methods_for_solving_\
+nonlinear_equations/test4_chisl[0.8].pdf\"\>"], "Output",
+ CellChangeTimes->{
+  3.81774150765629*^9, {3.817741545061894*^9, 3.8177415495486*^9}, {
+   3.817741756565093*^9, 3.817741765128166*^9}, {3.817741801817189*^9, 
+   3.8177418260005083`*^9}, 3.817741946239481*^9, 3.817742001930472*^9},
+ CellLabel->
+  "Out[143]=",ExpressionUUID->"48053e5e-19d0-441f-b8ec-f8f3025054e2"],
+
+Cell[BoxData["\<\"/Users/yakimkina/_workspace/_mgtu/cpp/methods_for_solving_\
+nonlinear_equations/test5_chisl[0.8].pdf\"\>"], "Output",
+ CellChangeTimes->{
+  3.81774150765629*^9, {3.817741545061894*^9, 3.8177415495486*^9}, {
+   3.817741756565093*^9, 3.817741765128166*^9}, {3.817741801817189*^9, 
+   3.8177418260005083`*^9}, 3.817741946239481*^9, 3.817742002315436*^9},
+ CellLabel->
+  "Out[144]=",ExpressionUUID->"befb9262-6add-4d58-81e4-37c2d7775de4"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",ExpressionUUID->"cc5ca72b-b717-4505-822e-59087edbd61e"],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{
+  3.817736096683323*^9},ExpressionUUID->"103f6d0f-28f3-4b2e-a582-\
+31075105bf5a"]
+},
+WindowSize->{1236, 920},
+WindowMargins->{{Automatic, 137}, {4, Automatic}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1980, 44, 157, "Input",ExpressionUUID->"20a0e02c-6643-41e6-8d78-bdec995d0ffb"],
+Cell[2541, 66, 921, 13, 30, "Input",ExpressionUUID->"497ec0c2-5afd-403e-b801-1fcc7bbe0129"],
+Cell[CellGroupData[{
+Cell[3487, 83, 2311, 49, 94, "Input",ExpressionUUID->"0eea3390-6f8f-4c25-b0fc-05400284cf17"],
+Cell[5801, 134, 452, 7, 34, "Output",ExpressionUUID->"48053e5e-19d0-441f-b8ec-f8f3025054e2"],
+Cell[6256, 143, 452, 7, 34, "Output",ExpressionUUID->"befb9262-6add-4d58-81e4-37c2d7775de4"]
+}, Open  ]],
+Cell[6723, 153, 81, 0, 30, "Input",ExpressionUUID->"cc5ca72b-b717-4505-822e-59087edbd61e"],
+Cell[6807, 155, 147, 3, 52, "Input",ExpressionUUID->"103f6d0f-28f3-4b2e-a582-31075105bf5a"]
+}
+]
+*)
+
