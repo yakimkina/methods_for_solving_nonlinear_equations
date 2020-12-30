@@ -5,7 +5,15 @@ point	bisection_method(VALUE_TYPE (*f)(VALUE_TYPE), point a, point b)
 	int k = 0; // количество итераций
 
 	point	root; // искомый корень уравнения
-	VALUE_TYPE	x0; // сохраняем начальное приближение(для вывода на экран)
+	
+	if (TEST2) root.x = 8;
+	else if (TEST3) root.x = 0;
+	else
+	{
+		root.x = (a.x + b.x) / 2;
+		root.y = f(root.x);
+	}
+	VALUE_TYPE	x0 = root.x; // сохраняем начальное приближение(для вывода на экран)
 
 
 	/* случай, когда ноль лежит в самой правой границе отрезка (в дальнейшем
@@ -16,14 +24,10 @@ point	bisection_method(VALUE_TYPE (*f)(VALUE_TYPE), point a, point b)
 	{
 		root.x = b.x;
 		root.y = b.y;
-		x0 = root.x;
+		if (!TEST2 && !TEST3) x0 = root.x;
 	}
 	else
 	{
-		root.x = (a.x + b.x) / 2;
-   		root.y = f(root.x);
-		x0 = root.x;
-
 		while (b.x - a.x > 2 * EPSILON)
 		{
 			if (abs(a.y) < EPSILON)	// левая граница отрезка совпала с нулем функции

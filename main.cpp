@@ -93,7 +93,7 @@ int		main()
 
 		cout << endl << endl;
 		point3d	x0;
-		VALUE_TYPE	step = 0.1;
+		VALUE_TYPE	step = 0.2;
 		for (VALUE_TYPE i = 10; i > -10; i -= step)
 		{
 			x0.x2 = i - step / 2;
@@ -102,19 +102,19 @@ int		main()
 				x0.x1 = j + step / 2;
 
 				x0.y1 = test_4_1(x0.x1, x0.x2); x0.y2 = test_4_1(x0.x1, x0.x2);
-				point3d	x4 = Newtons_method(f_t4, f_d_t4, x0, -10, 10, "test4", false); // тест 4
+				Newtons_method(f_t4, f_d_t4, x0, -10, 10, "test4", false, step / 2); // тест 4
 
 				x0.y1 = test_5_1(x0.x1, x0.x2); x0.y2 = test_5_1(x0.x1, x0.x2);
-				point3d	x5 = Newtons_method(f_t5, f_d_t5, x0, -10, 10, "test5", false); // тест 5
+				Newtons_method(f_t5, f_d_t5, x0, -10, 10, "test5", false, step / 2); // тест 5
 			}
 
 			/* последний символ в строке выносится в отдельную итерацию,
 			 * чтобы вместо запятой напечатать символ конца строки */
 			x0.y1 = test_4_1(x0.x1, x0.x2); x0.y2 = test_4_1(x0.x1, x0.x2);
-			point3d	x4 = Newtons_method(f_t4, f_d_t4, x0, -10, 10, "test4", true); // тест 4
+			Newtons_method(f_t4, f_d_t4, x0, -10, 10, "test4", true, step / 2); // тест 4
 
 			x0.y1 = test_5_1(x0.x1, x0.x2); x0.y2 = test_5_1(x0.x1, x0.x2);
-			point3d	x5 = Newtons_method(f_t5, f_d_t5, x0, -10, 10, "test5", true); // тест 5
+			Newtons_method(f_t5, f_d_t5, x0, -10, 10, "test5", true, step / 2); // тест 5
 		}
 	}
 

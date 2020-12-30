@@ -126,13 +126,29 @@ void	out_of_range_check(point3d &pnt, point3d &x0, VALUE_TYPE a, VALUE_TYPE b)
 }
 
 /* запись в файл */
-void	create_and_fill_file(point3d x0, int k, string &test_name, bool is_last)
+void	create_and_fill_file(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f, point3d x0, int k, string &test_name, bool is_last, VALUE_TYPE step)
 {
 	ofstream	file(DIR + test_name + "_diagram.csv", ios::app);
 
-	file << k;
-	if (!is_last) file << ", ";
-	else file << endl;
+//	if (f[0](x0.x1 ,x0.x2) == 0 || f[1](x0.x1, x0.x2) == 0)
+//	{
+//		if (k >= 30) file << k;
+//		else file << 100;
+//
+//		if (!is_last) file << ", ";
+//		else file << endl;
+//	}
+//	else
+//	{
+//		file << k;
+//
+//		if (!is_last) file << ", ";
+//		else file << endl;
+//	}
+
+	file << x0.x1 << ", " << x0.x2 << ", " << k << endl;
+//	if (!is_last) file << ", ";
+//	else file << endl;
 
 	file.close();
 }
@@ -140,7 +156,7 @@ void	create_and_fill_file(point3d x0, int k, string &test_name, bool is_last)
 point3d	Newtons_method(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f,
 					   vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f_d,
 					   point3d x0, VALUE_TYPE a, VALUE_TYPE b,
-					   string test_name, bool is_last) // переменные для записи в файл
+					   string test_name, bool is_last, VALUE_TYPE step) // переменные для записи в файл
 {
 	int k = 0; // количество итераций
 
@@ -207,7 +223,7 @@ point3d	Newtons_method(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)> &f,
 		cout << MAGENTA << fixed << "количество итераций: " << k << ", " << RESET;
 	}
 
-	if (DIAGRAM) create_and_fill_file(x_zero, k, test_name, is_last);
+	if (DIAGRAM) create_and_fill_file(f, x_zero, k, test_name, is_last, step);
 
 	return xk;
 }

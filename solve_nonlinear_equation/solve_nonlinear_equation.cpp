@@ -18,12 +18,15 @@ void	solve_nonlinear_equation(VALUE_TYPE (*f)(VALUE_TYPE), VALUE_TYPE (*f_d)(VAL
 	}
 
 	/* метод Ньютона */
-	cout << endl << MAGENTA << "[МЕТОД  НЬЮТОНА]" << RESET << endl;
+	cout.precision(PREC);
+	cout << endl << fixed  << MAGENTA << "[МЕТОД  НЬЮТОНА] отрезок локализации: [" << a << ", " << b << "]:" << endl;
 	for (int i = 0; i < segments.size(); i++)
 	{
 		cout.precision(PREC);
-		cout << MAGENTA << fixed << "отрезок локализации: [" << segments[i].a.x << ", " << segments[i].b.x << "], ";
-		point	x_i = Newtons_method(f, f_d, segments[i].a, segments[i].b);
+		point a1, b1;
+		a1.x = a; a1.y = f(a);
+		b1.x = b; b1.y = f(b);
+		point	x_i = Newtons_method(f, f_d, a1, b1);
 		cout << MAGENTA << fixed << "x[" << i << "] = " << x_i.x << ", f[x] = " << x_i.y << RESET << endl;
 	}
 }
@@ -40,7 +43,7 @@ void	solve_nonlinear_equation(vector<VALUE_TYPE (*)(VALUE_TYPE, VALUE_TYPE)>	&f,
 	for (int i = 0; i < x0.size(); i++)
 	{
 		cout << MAGENTA << fixed << "начальное приближение: (" << x0[i].x1 << ", " << x0[i].x2 << "), ";
-		point3d	x_i = Newtons_method(f, f_d, x0[i], a, b, "", false);
+		point3d	x_i = Newtons_method(f, f_d, x0[i], a, b, "", false, 0);
 		cout << MAGENTA << fixed << "x[" << i << "] = (" << x_i.x1 << ", " << x_i.x2 << "), f1[x] = " << x_i.y1 << ", f2[x] = " << x_i.y2 << endl;
 	}
 }
